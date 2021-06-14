@@ -6,9 +6,18 @@
 </head>
 <body>
 
-<form th:method="PATCH" th:action="@{/people/{id}(id=${personToBeDeliveredInHTMLEditFile.getId()})}" th:object="${personToBeDeliveredInHTMLEditFile}">
+<form th:method="PATCH" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
     <label for="nameForLabel">Enter name: </label>
     <input type="text" th:field="*{name}" id="nameForLabel"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+    <br/>
+    <label for="ageForLabel">Enter age: </label>
+    <input type="text" th:field="*{age}" id="ageForLabel"/>
+    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age error</div>
+    <br/>
+    <label for="emailForLabel">Enter email: </label>
+    <input type="text" th:field="*{email}" id="emailForLabel"/>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
     <br/>
     <input type="submit" value="Update this person!!!"/>
 </form>
